@@ -15,7 +15,7 @@
 - <a href="#mq"><b>.mq()</b></a> <b>1.6+</b>
 - <a href="#rectangle"><b>.rectangle()</b></a>
 - <a href="#aspect"><b>.aspect()</b></a> <b>1.7+</b>
-- <a href="#observe"><b>.observe()</b></a> <b>1.9+</b>
+- <a href="#watch"><b>.watch()</b></a> <b>1.9+</b>
 
 #### Accuracy
 
@@ -139,20 +139,23 @@ verge.aspect(screen) // -> device aspect ratio
 1 < verge.aspect() // => landscape orientation
 ```
 
-### .observe()
-#### .observe(object)
+### .watch()
+#### .watch(object)
 
-Observes the given target (based on both the resize as well as the scroll event) and triggers the corresponding callback. 
+Watches the given target (based on both the resize as well as the scroll event) and triggers the corresponding callback. 
 
 ```js
-verge.aspect({
+verge.watch({
     target: element,
-    in: function () {},
+    callback: function () {},
 })
-verge.aspect({
+verge.watch({
     target: element,
-    in: function () {},
-    out: function () {}
+    callback: [
+        function () {}, // -> in viewport
+        function () {} // -> out viewport
+    ],
+    interval: 250
 })
 ```
 

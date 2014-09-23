@@ -59,15 +59,19 @@
     _.every([readyTests, resizeTests, scrollTests], update);
     $(window).on('resize', bind(update, null, resizeTests)).on('scroll', bind(update, null, scrollTests));
 
-    verge.observe({
+    verge.watch({
       target: id('a'),
-      in: function () { id('observe-a-neg').innerHTML = 'true'; },
-      out: function () { id('observe-a-neg').innerHTML = 'false';}
+      callback: [
+        function () { id('observe-a-neg').innerHTML = 'true'; },
+        function () { id('observe-a-neg').innerHTML = 'false'; }
+      ]
     });
-    verge.observe({
+    verge.watch({
       target: id('b'),
-      in: function () { id('observe-b-neg').innerHTML = 'true'; },
-      out: function () { id('observe-b-neg').innerHTML = 'false'; }
+      callback: [
+        function () { id('observe-b-neg').innerHTML = 'true'; },
+        function () { id('observe-b-neg').innerHTML = 'false'; }
+      ]
     });
   });
 }(this, window, document));

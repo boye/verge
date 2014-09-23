@@ -31,7 +31,7 @@ module.exports = function(grunt) {
       build: {
         files: {
           '<%= pkg.name %>.js': ['src/<%= pkg.name %>.js'],
-          '<%= pkg.name %>.observe.js': ['src/<%= pkg.name %>.js', 'src/observe.js']
+          '<%= pkg.name %>.watch.js': ['src/<%= pkg.name %>.js', 'src/watch.js']
         }
       }
     },
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
       build: {
         files: {
           '<%= pkg.name %>.min.js': ['<%= pkg.name %>.js'],
-          '<%= pkg.name %>.observe.min.js': ['<%= pkg.name %>.observe.js']
+          '<%= pkg.name %>.watch.min.js': ['<%= pkg.name %>.watch.js']
         }
       }
     }

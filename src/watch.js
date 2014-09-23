@@ -7,11 +7,15 @@
 
   function _noop() {}
 
-  function _observe(options) {
+  function _isArray(arr) {
+    return Object.prototype.toString.call(arr) === '[object Array]';
+  }
+
+  function _watch(options) {
     var target = options.target,
         callbacks = {
-          'in': options['in'] || _noop,
-          'out': options['out'] || _noop
+          'in': _noop,
+          'out': _noop
         };
 
     if ( !target ) {
@@ -20,6 +24,13 @@
 
     if ( !target || (target.nodeType && target.nodeType !== 1) ) {
       return this;
+    }
+
+    if ( _isArray(options.callback) ) {
+      callbacks['in'] = options.callback[0];
+      callbacks['out'] = options.callback[1];
+    } else if ( typeof options.callback === 'function' ) {
+      callbacks['in'] = options.callback;
     }
 
     _monitor(target, callbacks, options.interval);
@@ -94,6 +105,6 @@
     return original;
   }
 
-  return _extend(window.verge, {observe: _observe});
+  return _extend(window.verge, {watch: _watch});
 
 }(this, verge));
