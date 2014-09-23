@@ -15,9 +15,11 @@
     td:first-child { font-weight:normal;color:#586e75 }
     td:last-child { color:#dc322f; }
     pre { padding:1em; background:#073642; color:#93a1a1 }
+    #box {width: 50%; height: 100px; overflow-y:scroll;}
   </style>
   <script src="./vendor/ender.js"></script>
   <script src="../src/verge.js"></script>
+  <script src="../src/observe.js"></script>
   <script src="./index.js"></script>
 </head>
 <body>
@@ -34,6 +36,11 @@
       <th scope="col"><a href=#tests accesskey=s>test<br>code</a></th>
       <th scope="col"><a href=#tests>expected<br>type</a></th>
       <th scope="col"><a href=#tests>live<br>output</a></th>
+    </tr>
+    <tr>
+      <td><code>$<wbr>.observe({target:a})</code></td>
+      <td><code>boolean</code></td>
+      <td><code id="observe-a-neg"></code></td>
     </tr>
     <tr>
       <td><code>$<wbr>.inViewport(a, <span class=number>-100</span>)</code></td>
@@ -114,6 +121,11 @@
       <td><code>$<wbr>.inViewport(b, <span class=number>-100</span>)</code></td>
       <td><code>boolean</code></td>
       <td><code id="in-viewport-b-neg"></code></td>
+    </tr>
+    <tr>
+      <td><code>$<wbr>.observe({target:b})</code></td>
+      <td><code>boolean</code></td>
+      <td><code id="observe-b-neg"></code></td>
     </tr>
   </table>
   

@@ -53,9 +53,21 @@
     dynamicTests['in-viewport-b'] = bind($.inViewport, $, b);
     dynamicTests['in-viewport-b-pos'] = bind($.inViewport, $, b, 100);
     dynamicTests['in-viewport-b-neg'] = bind($.inViewport, $, b, -100);  
+
     _.assign(resizeTests, dynamicTests);
     _.assign(scrollTests, dynamicTests);
     _.every([readyTests, resizeTests, scrollTests], update);
     $(window).on('resize', bind(update, null, resizeTests)).on('scroll', bind(update, null, scrollTests));
+
+    verge.observe({
+      target: id('a'),
+      in: function () { id('observe-a-neg').innerHTML = 'true'; },
+      out: function () { id('observe-a-neg').innerHTML = 'false';}
+    });
+    verge.observe({
+      target: id('b'),
+      in: function () { id('observe-b-neg').innerHTML = 'true'; },
+      out: function () { id('observe-b-neg').innerHTML = 'false'; }
+    });
   });
 }(this, window, document));

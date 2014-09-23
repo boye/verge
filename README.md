@@ -15,6 +15,7 @@
 - <a href="#mq"><b>.mq()</b></a> <b>1.6+</b>
 - <a href="#rectangle"><b>.rectangle()</b></a>
 - <a href="#aspect"><b>.aspect()</b></a> <b>1.7+</b>
+- <a href="#observe"><b>.observe()</b></a> <b>1.9+</b>
 
 #### Accuracy
 
@@ -136,6 +137,23 @@ verge.aspect() // -> viewport aspect ratio
 verge.aspect(element) // -> element aspect ratio
 verge.aspect(screen) // -> device aspect ratio
 1 < verge.aspect() // => landscape orientation
+```
+
+### .observe()
+#### .observe(object)
+
+Observes the given target (based on both the resize as well as the scroll event) and triggers the corresponding callback. 
+
+```js
+verge.aspect({
+    target: element,
+    in: function () {},
+})
+verge.aspect({
+    target: element,
+    in: function () {},
+    out: function () {}
+})
 ```
 
 ## Integrate
